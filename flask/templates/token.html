@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+<div class="tokad">
+  {% for token in tokens %}
+  <div class="tok{{ loop.index }}">
+    <div class="tokcard">
+      <div class="wrapper">
+        <img src="{{ token.logo }}" class="image--cover">
+      </div>
+      <div class="tokcard-info">
+        <p class="title">{{ token.contact_address }}</p>
+        <p class="subtitle">{{ token.description }}</p>
+      </div>
+      <div class="socials">
+        <a href="#"><span>website</span></a>
+        <a href="#"><span>Twitter</span></a>
+        <a href="#"><span>telegram</span></a>
+        <a href="#"><span>etherscan</span></a>
+        <a href="#"><span>Medium</span></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="navbar">
+
+</div>
+<div class="container">
+
+
+  <div class="ama">
+  {% for ama in amas %}
+    <div class="ama{{ loop.index }}">
+  <div class = "card">
+    <img src="static/{{ loop.index }}.jpg" alt="">
+    <div class="card-content">
+      <h2>
+        {{ ama.name }}
+      </h2>
+      <p>
+        {{ ama.description }}
+      </p>
+      <a href="#" class="button">
+        Find out more 
+        <span class="material-symbols-outlined">
+          arrow_right_alt
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+  </div>
+
+  <div class="tokad">
+ {% for token in tokens %}
+  <div class="tok{{ loop.index }}">
+    <div class="tokcard">
+      <div class="wrapper">
+        <img src="static/{{ token.contact_address }}_logo.jpg" class="image--cover">
+      </div>
+      <div class="tokcard-info">
+        <h1 class="title">{{ token.name }}</h1>
+        <p class="subtitle">{{ token.description }}</p>
+      </div>
+      <div class="socials">
+        <a href="{{ token.website }}"><span>website</span></a>
+        <a href="{{ token.twitterlink }}"><span>Twitter</span></a>
+        <a href="{{ token.tglink }}"><span>telegram</span></a>
+        <a href="https://etherscan.io/address/{{ token.contact_address }}"><span>etherscan</span></a>
+        
+      </div>
+    </div>
+  </div>
+{% endfor %}
+  </div>
+
+  <div class="message">
+    <div class="message1"></div>
+    <div class="message2"></div>
+    <div class="message3"></div>
+  </div>
+</div>
+</body>
+</html>
