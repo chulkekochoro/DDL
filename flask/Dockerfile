@@ -4,7 +4,7 @@ FROM python:3.8
 
 # Set the working directory in the container
 
-WORKDIR flask/
+WORKDIR /flask
 
 # Copy the requirements file into the container
 
@@ -12,7 +12,7 @@ COPY requirements.txt .
 
 # Install the project dependencies
 
-RUN pip install -r flask/requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy the entire project directory into the container
 
