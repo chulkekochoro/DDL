@@ -24,6 +24,6 @@ EXPOSE 5000
 
 # Command to run the Flask application
 
-CMD ["python", "app.py"]
+CMD ["sh", "-c", "python app.py & python tg.py"]
 
 # Fixed typo in the error message that stated "image build failedundefined" and removed the word "undefined" that was not part of the original error message.
