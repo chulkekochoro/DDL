@@ -8,11 +8,11 @@ WORKDIR /flask
 
 # Copy the requirements file into the container
 
-COPY requirements.txt .
+#COPY requirements.txt .
 
 # Install the project dependencies
 
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
 
 # Copy the entire project directory into the container
 
