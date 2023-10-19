@@ -58,6 +58,24 @@ class Ama(db.Model):
         self.name = name
         self.venue_link = venue_link
 
+class Message(db.Model):
+    __tablename__ = 'message'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    message = db.Column(db.String(255), nullable=False)
+
+
+
+    def __repr__(self):
+        return f"<Message {self.id}>"
+
+    def __init__(self, name, message):
+        self.name = name
+        self.message = message
+
+
+
 
 # Endpoint for inserting token data
 @APP.route('/tokens', methods=['POST'])
@@ -140,11 +158,43 @@ def insert_ama():
         }
         return jsonify(response), 400
 
+@APP.route('/message', methods=['POST'])
+def insert_message():
+    try:
+        # Get the token data from the request body
+        message_data = request.json
+
+        # Extract the required fields
+        name = message_data.get('name')
+        message = message_data.get('message')
+        print(message,name)
+
+        # Create a new Token object
+        messages = Message( name=name, message=message)
+
+        # Perform the database insertion
+        db.session.add(messages)
+        db.session.commit()
+
+        # Return a success response
+        response = {
+            'message': 'message added successfully!'
+        }
+        return jsonify(response), 200
+
+    except:
+        # Return an error response if something goes wrong
+        response = {
+            'message': 'Failed to added the message. Please try again.'
+        }
+        return jsonify(response), 400
+
 @APP.route('/')
 def page():
-    tokens =Tokens.query.limit(12).all()
+    tokens =Tokens.query.all()
     amas =Ama.query.limit(6).all()
-    return render_template('index.html', tokens=tokens, amas=amas)
+    message=Message.query.all()
+    return render_template('index.html', tokens=tokens, amas=amas , message=message)
 
 
 

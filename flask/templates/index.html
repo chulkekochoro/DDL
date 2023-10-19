@@ -9,34 +9,14 @@
 </head>
 <body>
 <div class="navbar">
-
+<nav>
+  <a href="#">ETHEREUM(ETH)</a>
+  <a href="#">BINANCE-SMART-CHAIN(BSC)</a>
+  <a href="#">LISTING</a>
+  <div id="indicator"></div>
+</nav>
 </div>
 <div class="container">
-
-
-  <div class="ama">
-  {% for ama in amas %}
-    <div class="ama{{ loop.index }}">
-  <div class = "card">
-    <img src="static/{{ loop.index }}.jpg" alt="">
-    <div class="card-content">
-      <h2>
-        {{ ama.name }}
-      </h2>
-      <p>
-        {{ ama.description }}
-      </p>
-      <a href="#" class="button">
-        Find out more 
-        <span class="material-symbols-outlined">
-          arrow_right_alt
-        </span>
-      </a>
-    </div>
-  </div>
-</div>
-{% endfor %}
-  </div>
 
   <div class="tokad">
  {% for token in tokens %}
@@ -60,12 +40,14 @@
   </div>
 {% endfor %}
   </div>
-
-  <div class="message">
-    <div class="message1"></div>
-    <div class="message2"></div>
-    <div class="message3"></div>
-  </div>
-</div>
+  
+    <div class="message">
+     {% for msg in message %}
+      <div class="message-section">
+        <p>{{ msg.name }}:{{ msg.message }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    
 </body>
 </html>

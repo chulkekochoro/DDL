@@ -8,18 +8,17 @@ db_uri = 'sqlite:///{}'.format(db_path)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 db = SQLAlchemy(app)
 
-class Ama(db.Model):
-    __tablename__ = 'amas'
+class Message(db.Model):
+    __tablename__ = 'message'
 
     id = db.Column(db.Integer, primary_key=True)
-    banner = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
-    name = db.Column(db.String(255), nullable=False)
-    venue_link = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp())
+    elon = db.Column(db.String(255), nullable=False)
+    vitalk = db.Column(db.String(255), nullable=False)
+    cz = db.Column(db.String(255), nullable=False)
+
 
     def __repr__(self):
-        return f"<Ama {self.id}>"
+        return f"<Message {self.id}>"
 
 with app.app_context():
     # Create the tokens table

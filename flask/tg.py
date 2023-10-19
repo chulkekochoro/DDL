@@ -20,6 +20,7 @@ dp.middleware.setup(LoggingMiddleware())
 
 API_URL = 'http://localhost:5000/tokens'
 AMA_URL = 'http://localhost:5000/amas'
+Message_URL='http://localhost:5000/message'
 INFURA_URL = "https://mainnet.infura.io/v3/8d8396c4e15a4c2fa93a6eea97000b15"
 web3 = Web3(Web3.HTTPProvider(INFURA_URL))
 
@@ -48,6 +49,9 @@ class AMAListingForm(StatesGroup):
     venue_link = State()
     description = State()
 
+class MessageListingForm(StatesGroup):
+    name = State()
+    message = State()
 
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
@@ -241,6 +245,41 @@ async def handle_ama_description(message: types.Message, state: FSMContext):
             await message.answer(response_message)
         else:
             await message.answer("Failed to list the AMA. Please try again.")
+
+    # Reset state
+    await state.finish()
+
+@dp.message_handler(commands=['MESSAGE'])
+async def message_listing_handler(message: types.Message, state: FSMContext):
+    await message.answer("Please enter the name:")
+    await MessageListingForm.name.set()
+
+@dp.message_handler(state=MessageListingForm.name)
+async def handle_message_name(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['name'] = message.text
+
+    await message.answer("Please send the message:")
+    await MessageListingForm.message.set()
+
+
+@dp.message_handler(state=MessageListingForm.message)
+async def handle_message_description(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['message'] = message.text
+
+        message_data = {
+            'name': data['name'],
+            'message': data['message'],
+        }
+
+        response = requests.post(Message_URL, json=message_data)
+
+        if response.status_code == 200:
+            response_message = f"Message listed!\nName: {data['name']}\nmessage: {data['message']}\n"
+            await message.answer(response_message)
+        else:
+            await message.answer("Failed to list the message. Please try again.")
 
     # Reset state
     await state.finish()

@@ -9,76 +9,21 @@ html, body {
   overflow: hidden;
   background-color:white;
 }
+.navbar{
+    padding: 0 0 0 15px; 
+}
 
 .container {
   
-  padding: 30px 200px;
+  padding: 5px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr ;
+  grid-template-rows: 1fr ;
   gap: 2px;
   grid-auto-flow: row;
   grid-template-areas:
-    "ama ama ama"
-    "tokad tokad tokad"
-    "message message message";
+    "tokad tokad tokad";
 }
-
-/* Styles for large screens */
-
-@media screen and (min-width: 1200px) {
-  .container {
-    height: 600px;
-  }
-}
-
-/* Styles for medium screens */
-
-@media screen and (max-width: 1199px) and (min-width: 768px) {
-  .container {
-    height: 500px;
-  }
-}
-
-/* Styles for small screens */
-
-@media screen and (max-width: 767px) {
-  html, body {
-    height: auto;
-    overflow: visible;
-  }
-  
-  .container {
-    display: block;
-    height: auto;
-  }
-  
-  /* Adjust specific styles for small screens */
-  /* ... */
-}
-/* Rest of your code... */
-
-
-.ama { 
-
-  margin: 2px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 5px 5px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "ama1 ama2 ama3"
-    "ama1 ama2 ama3"
-    "ama1 ama2 ama3";
-  grid-area: ama;
-}
-
-.ama1 { grid-area: ama1; }
-
-.ama2 { grid-area: ama2; }
-
-.ama3 { grid-area: ama3; }
 
 .tokad { 
   margin: 5px;
@@ -92,131 +37,15 @@ html, body {
     "tok4 tok5 tok6"
     "tok7 tok8 tok9";
   grid-area: tokad;
+  overflow: auto;
 }
 
-.tok1 { grid-area: tok1;}
-.tok2 { grid-area: tok2;}
-.tok3 { grid-area: tok3;}
-
-.tok4 { grid-area: tok4;}
-
-.tok5 { grid-area: tok5;}
-
-.tok6 { grid-area: tok6;}
-
-.tok7 { grid-area: tok7;}
-
-.tok8 { grid-area: tok8;}
-
-.tok9 { grid-area: tok9;}
-
-
-.message {
-  margin: 5px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 1px 1px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "message1 message1 message1"
-    "message2 message2 message2"
-    "message3 message3 message3";
-  grid-area: message;
-}
-
-.message1 { grid-area: message1; }
-
-.message2 { grid-area: message2; }
-
-.message3 { grid-area: message3; }
-
-.card {
-  border: 2px solid #313131;
-  width: 100%;
-  max-width: 27rem;
-  height: 10rem;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
-  color: #f0f0f0;
-  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: 0.9;
-  transition: opacity 0.2s ease-out;
-}
-
-.card h2 {
-  position: absolute;
-  inset: auto auto 30px 30px;
-  margin: 0;
-  transition: inset 0.3s 0.3s ease-out;
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: normal;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-}
-
-.card p,
-.card a {
-  position: absolute;
-  opacity: 0;
-  max-width: 80%;
-  transition: opacity 0.3s ease-out;
-  font-size: 1rem;
-}
-
-.card p {
-  inset: auto auto 80px 30px;
-}
-
-.card a {
-  inset: auto auto 40px 30px;
-  color: inherit;
-  text-decoration: none;
-}
-
-
-.card:hover h2 {
-  inset: auto auto 220px 30px;
-  transition: inset 0.3s ease-out;
-}
-
-.card:hover p,
-.card:hover a {
-  opacity: 1;
-  transition: opacity 0.5s 0.1s ease-in;
-}
-
-.card:hover img {
-   opacity: 0.5;
-  transition: opacity 0.3s ease-in;
-  opacity: 1;
-}
-.card:hover {
-  box-shadow: 0 0 20px rgba(252, 41, 71, 1);
-  border-color: #FC2947;
-}
-
-.material-symbols-outlined {
-  vertical-align: middle;
-}
-.navbar{
-  margin: 5px;
-}
 
 .tokcard {
   position: relative;
   width: 100%;
   max-width: 27rem;
-  height: 6rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -385,4 +214,3 @@ content:'\f23a';
 .tokcard:hover .socials {
   display: block;
 }
-
