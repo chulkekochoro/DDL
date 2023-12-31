@@ -3,3 +3,4 @@ Flask-SQLAlchemy== 3.0.4
 requests==2.26.0
 web3==5.24.0
 aiogram==2.17
+Telethon==1.33.1
